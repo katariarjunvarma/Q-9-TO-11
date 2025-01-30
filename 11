@@ -1,0 +1,65 @@
+interface Drawable {
+    void draw();
+}
+
+abstract class Shape {
+    abstract double calculateArea();
+
+    void displayShape() {
+        System.out.println("This is a shape.");
+    }
+}
+
+class Circle extends Shape implements Drawable {
+    double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("Drawing a Circle.");
+    }
+}
+
+class Rectangle extends Shape implements Drawable {
+    double length;
+    double breadth;
+
+    public Rectangle(double length, double breadth) {
+        this.length = length;
+        this.breadth = breadth;
+    }
+
+    @Override
+    double calculateArea() {
+        return length * breadth;
+    }
+
+    @Override
+    public void draw() {
+        System.out.println("Drawing a Rectangle.");
+    }
+}
+
+public class ShapeDemo {
+    public static void main(String[] args) {
+        Circle circle = new Circle(5);
+        Rectangle rectangle = new Rectangle(10, 5);
+
+        circle.displayShape();
+        circle.draw();
+        System.out.println("Area of Circle: " + circle.calculateArea());
+        System.out.println(); // Add a newline for better formatting
+
+        rectangle.displayShape();
+        rectangle.draw();
+        System.out.println("Area of Rectangle: " + rectangle.calculateArea());
+    }
+}
