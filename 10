@@ -1,0 +1,57 @@
+import java.util.Scanner;
+
+class Student {
+    String name;
+    int rollNumber;
+    float marks;
+
+    public Student(String name, int rollNumber, float marks) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.marks = marks;
+    }
+
+    public void displayDetails() {
+        System.out.println("Name: " + name + ", Roll Number: " + rollNumber + ", Marks: " + marks);
+    }
+
+    public void updateMarks(float newMarks) {
+        this.marks = newMarks;
+    }
+
+    public void updateMarks(float percentageIncrease) {
+        this.marks = this.marks * (1 + percentageIncrease / 100);
+    }
+}
+
+public class StudentManagement {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter student details:");
+        System.out.print("Name: ");
+        String name = input.nextLine();
+        System.out.print("Roll Number: ");
+        int rollNumber = input.nextInt();
+        System.out.print("Marks: ");
+        float marks = input.nextFloat();
+
+        Student student = new Student(name, rollNumber, marks);
+
+        System.out.println("\nUpdate marks:");
+        System.out.print("New Marks: ");
+        float newMarks = input.nextFloat();
+        student.updateMarks(newMarks);
+        System.out.print("Updated Details: "); student.displayDetails();
+
+
+        System.out.println("\nUpdate marks by percentage increase:");
+        System.out.print("Percentage: ");
+        float percentageIncrease = input.nextFloat();
+        student.updateMarks(percentageIncrease);
+        System.out.print("Updated Details: "); student.displayDetails();
+
+        input.close();
+    }
+}
